@@ -8,11 +8,11 @@
     <link><?php echo $path ?></link>
     <language>ja</language>
 <?php foreach (glob('*.m4a') as $file): ?>
-<?php   preg_match('/(\d{4})-(\d{2})-(\d{2})/', $file, $matches) ?>
+<?php preg_match('/(\w+)_(\d{4})-(\d{2})-(\d{2})-(\d{2})_(\d{2})/', $file, $matches) ?>
     <item>
-      <title><?php echo $matches[0] ?></title>
+      <title><?php echo $matches[1], '_', $matches[2], '.', $matches[3], '.', $matches[4] ?></title> 
       <description><?php echo $matches[0] ?></description>
-      <pubDate><?php echo date('r', mktime($matches[4], $matches[5], 0, $matches[2], $matches[3], $matches[1])) ?></pubDate>
+      <pubDate><?php echo date('r', mktime($matches[5], $matches[4], 0, $matches[3], $matches[4], $matches[2])) ?></pubDate>
       <enclosure url="<?php echo $path ?><?php echo $file ?>" length="<?php echo filesize($file) ?>" type="<?php echo mime_content_type($file) ?>" />
     </item>
 <?php endforeach ?>
