@@ -155,4 +155,3 @@ avconv -loglevel quiet -y -i "/tmp/${channel}_${date}" -acodec copy "${outdir}/$
 if [ $? = 0 ]; then
   rm -f "/tmp/${channel}_${date}"
 fi
-
